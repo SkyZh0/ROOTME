@@ -9,17 +9,16 @@ import os
 
 
 URL = "http://challenge01.root-me.org/programmation/ch7/"
-
 s = requests.Session()
 code = (s.get(url=URL)).text
 
-SC = ''
 
+SC = ''
 htmldata = code
 soup = BeautifulSoup(htmldata, 'html.parser') 
 for item in soup.find_all('img'):
     SC = SC + item['src']
-
+    
 SC = (SC.split(','))[1]
 
 ddata = base64.b64decode(SC)
@@ -52,8 +51,8 @@ for i in range(len(data)-1):
             Idata[i][j][0], Idata[i][j][1], Idata[i][j][2] = 0,0,0
 
 final = Image.fromarray(Idata)
-
 final.save('final.jpg')
+
 
 result = ''
 apiURL = 'http://api.qrserver.com/v1/read-qr-code/'
@@ -64,14 +63,12 @@ with open('final.jpg','rb') as img:
         r = q.post(apiURL,files=files)
         result = result + r.text
 
-
 result = (result.split(',')[2].split(' ')[3])
 result = result[1:len(result)-1]
-
 
 
 result_data = {"metu": result}
 resp = s.post(url=URL, data=result_data)
 
-print('FINAL RESPONSE: ', resp.text[0:300])
-print(result)
+
+print(f'FINAL RESPONSE with code {result}: ', resp.text[0:300])
