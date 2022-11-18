@@ -31,9 +31,8 @@ while True:
       for i in result:          
         stresult = stresult + i
       if len(stresult) < 50:
-        stresult = zlib.decompress(bytes(stresult.encode()), wbits = -zlib.MAX_WBITS)
-        message = str(stresult) + "=="
-        message = base64.b64decode(message)
-        message = message.decode("UTF-8")
-        print(message)
+        decoded = base64.b64decode(stresult + "==")
+        decomp = zlib.decompress(decoded)
+        final = decomp.decode("UTF-8")
+        irc.send("Candy", "!ep4 -rep " + final)
       
