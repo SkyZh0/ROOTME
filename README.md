@@ -1,5 +1,5 @@
 <h1>ROOTME CHALLENGES</h1>
-<h3>All my rootme completed challenges</h3>
+<h3>All my rootme programming completed challenges</h3>
 <ul>
   <li> <a href="ROOT-ME/ROOTME-IRC/">ROOTME-IRC</a></li>
   <li> <a href="ROOT-ME/ROOTME-IRC-B64/">ROOTME-IRC-B64</a></li>
